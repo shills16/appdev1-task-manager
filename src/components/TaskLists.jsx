@@ -3,6 +3,7 @@ import { MdAddCircleOutline } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { db } from '../firebase.js';
 import { collection, addDoc, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firestore';
+import { SignOut } from './SignOut';
 
 const TaskLists = ({ user }) => {
     const [loading, setLoading] = useState(true);
@@ -93,9 +94,10 @@ const TaskLists = ({ user }) => {
 
     return (
         <div>
-            <h3>Welcome, {user}</h3>
+            <h1>Task Lists App</h1>
+            <h3>Welcome, {user.displayName || user.email} | <SignOut /></h3>
 
-            <form onSubmit={handleAddTask}>
+            <form className='listform' onSubmit={handleAddTask}>
                 <input
                     type="text"
                     placeholder="Task Title"
